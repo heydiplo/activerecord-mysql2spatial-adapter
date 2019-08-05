@@ -76,13 +76,13 @@ module ActiveRecord
         end
 
 
-        def type_to_sql(type_, limit_ = nil, precision_ = nil, scale_ = nil)
+        def type_to_sql(type_, limit: nil, precision: nil, scale: nil, unsigned: nil, **)
           if (info_ = spatial_column_constructor(type_.to_sym))
-            type_ = limit_[:type] || type_ if limit_.is_a?(::Hash)
+            type_ = limit[:type] || type_ if limit.is_a?(::Hash)
             type_ = 'geometry' if type_.to_s == 'spatial'
             type_ = type_.to_s.gsub('_', '').upcase
           end
-          super(type_, limit_, precision_, scale_)
+          super
         end
 
 
