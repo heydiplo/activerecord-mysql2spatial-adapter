@@ -32,23 +32,18 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # -----------------------------------------------------------------------------
 
-
 require 'rgeo/active_record'
 require 'active_record/connection_adapters/mysql2_adapter'
 
-
 # The activerecord-mysql2spatial-adapter gem installs the *mysql2spatial*
 # connection adapter into ActiveRecord.
-
 module ActiveRecord
 
   # ActiveRecord looks for the mysql2spatial_connection factory method in
   # this class.
-
   class Base
 
     # Create a mysql2spatial connection adapter.
-
     def self.mysql2spatial_connection(config_)
       config_[:username] = 'root' if config_[:username].nil?
       if ::Mysql2::Client.const_defined?(:FOUND_ROWS)
@@ -61,7 +56,6 @@ module ActiveRecord
 
   end
 
-
   module ConnectionAdapters
     module Mysql2SpatialAdapter
 
@@ -72,7 +66,6 @@ module ActiveRecord
   end
 
 end
-
 
 require 'active_record/connection_adapters/mysql2spatial_adapter/version.rb'
 require 'active_record/connection_adapters/mysql2spatial_adapter/main_adapter.rb'

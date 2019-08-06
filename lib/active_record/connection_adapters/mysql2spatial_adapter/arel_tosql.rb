@@ -32,12 +32,10 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # -----------------------------------------------------------------------------
 
-
 # :stopdoc:
 
 module Arel
   module Visitors
-
     class MySQL2Spatial < MySQL
 
       if ::Arel::Visitors.const_defined?(:BindVisitor)
@@ -61,8 +59,8 @@ module Arel
           standard_name_
         end
       end
-    end
 
+    end
   end
 end
 

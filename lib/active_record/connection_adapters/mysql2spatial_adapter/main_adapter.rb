@@ -32,7 +32,6 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # -----------------------------------------------------------------------------
 
-
 # :stopdoc:
 
 module ActiveRecord
@@ -42,7 +41,6 @@ module ActiveRecord
 
         NATIVE_DATABASE_TYPES = Mysql2Adapter::NATIVE_DATABASE_TYPES.merge(spatial: { name: 'geometry' })
 
-
         def initialize(*args_)
           super
           if defined?(@visitor) && @visitor
@@ -50,21 +48,17 @@ module ActiveRecord
           end
         end
 
-
         def adapter_name
           Mysql2SpatialAdapter::ADAPTER_NAME
         end
-
 
         def spatial_column_constructor(name_)
           ::RGeo::ActiveRecord::DEFAULT_SPATIAL_COLUMN_CONSTRUCTORS[name_]
         end
 
-
         def native_database_types
           NATIVE_DATABASE_TYPES
         end
-
 
         def quote(value_)
           value_ = value_.value_for_database if value_.respond_to?(:value_for_database)
@@ -75,7 +69,6 @@ module ActiveRecord
           end
         end
 
-
         def type_to_sql(type_, limit: nil, precision: nil, scale: nil, unsigned: nil, **)
           if (info_ = spatial_column_constructor(type_.to_sym))
             type_ = limit[:type] || type_ if limit.is_a?(::Hash)
@@ -84,7 +77,6 @@ module ActiveRecord
           end
           super
         end
-
 
         def add_index(table_name_, column_name_, options_ = {})
           if options_[:spatial]
@@ -98,7 +90,6 @@ module ActiveRecord
           end
         end
 
-
         def columns(table_name_, name_ = nil)
           result_ = @connection.query "SHOW FULL FIELDS FROM #{quote_table_name(table_name_)}"
           columns_ = []
@@ -108,7 +99,6 @@ module ActiveRecord
           end
           columns_
         end
-
 
         def indexes(table_name_, name_ = nil)
           indexes_ = []
@@ -126,7 +116,6 @@ module ActiveRecord
           end
           indexes_
         end
-
 
         protected
 
