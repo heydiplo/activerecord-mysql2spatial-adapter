@@ -52,8 +52,8 @@ module ActiveRecord
           Mysql2SpatialAdapter::ADAPTER_NAME
         end
 
-        def spatial_column_constructor(name_)
-          ::RGeo::ActiveRecord::DEFAULT_SPATIAL_COLUMN_CONSTRUCTORS[name_]
+        def spatial_column_constructor(name)
+          ::RGeo::ActiveRecord.geometric_type_from_name(name)
         end
 
         def native_database_types

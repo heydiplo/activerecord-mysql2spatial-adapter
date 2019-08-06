@@ -68,6 +68,7 @@ module ActiveRecord
 end
 
 require 'active_record/connection_adapters/mysql2spatial_adapter/version.rb'
+require 'active_record/connection_adapters/mysql2spatial_adapter/column_methods.rb'
 require 'active_record/connection_adapters/mysql2spatial_adapter/main_adapter.rb'
 require 'active_record/connection_adapters/mysql2spatial_adapter/spatial_column.rb'
 require 'active_record/connection_adapters/mysql2spatial_adapter/arel_tosql.rb'
