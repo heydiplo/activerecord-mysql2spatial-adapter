@@ -14,7 +14,7 @@ requires the mysql2 gem.
 First, this adapter extends the migration syntax to support creating
 spatial columns and indexes. To create a spatial column, use the
 <tt>:geometry</tt> type, or any of the OGC spatial types such as
-<tt>:point</tt> or <tt>:line_string</tt>. To create a spatial index, set
+<tt>:point</tt> or <tt>:linestring</tt>. To create a spatial index, set
 the <tt>:spatial</tt> option to true. Remember that, on some versions of
 MySQL, only the MyISAM engine supports spatial indexes, and the indexed
 column may need to be NOT NULL.
@@ -22,12 +22,12 @@ column may need to be NOT NULL.
 Examples:
 
   create_table :my_spatial_table, :options => 'ENGINE=MyISAM' do |t|
-    t.column :latlon, :point, :null => false
-    t.line_string :path
+    t.column :latlon, :point, null: false
+    t.linestring :path
     t.geometry :shape
   end
   change_table :my_spatial_table do |t|
-    t.index :latlon, :spatial => true
+    t.index :latlon, spatial: true
   end
 
 === Spatial Attributes
@@ -105,8 +105,9 @@ This adapter has the following requirements:
 * rgeo 0.3.20 or later.
 * rgeo-activerecord 5.0 or later.
 
-Use the branch 'activerecord-4.2' for AR4.2 and mysql2 0.3.x
-Use the branch 'activerecord-5.0' for AR5.0, AR5.1 and mysql2 0.3.x
+Use the branch 'activerecord-4.2' for AR4.2 and mysql2 0.3.x.
+
+Use the branch 'activerecord-5.0' for AR5.0, AR5.1 and mysql2 0.3.x.
 
 Install this adapter as a gem:
 
