@@ -87,11 +87,11 @@ module RGeo
 
             def test_create_geometry_with_index
               klass_ = create_ar_class
-              klass_.connection.create_table(:spatial_test, :options => 'ENGINE=MyISAM') do |t_|
-                t_.column 'latlon', :geometry, :null => false
+              klass_.connection.create_table(:spatial_test, options: 'ENGINE=MyISAM') do |t_|
+                t_.column 'latlon', :geometry, null: false
               end
               klass_.connection.change_table(:spatial_test) do |t_|
-                t_.index([:latlon], :spatial => true)
+                t_.index([:latlon], spatial: true)
               end
               assert(klass_.connection.indexes(:spatial_test).last.spatial)
             end
@@ -143,13 +143,13 @@ module RGeo
 
             def test_readme_example
               klass_ = create_ar_class
-              klass_.connection.create_table(:spatial_test, :options => 'ENGINE=MyISAM') do |t_|
-                t_.column(:latlon, :point, :null => false)
+              klass_.connection.create_table(:spatial_test, options: 'ENGINE=MyISAM') do |t_|
+                t_.column(:latlon, :point, null: false)
                 t_.line_string(:path)
                 t_.geometry(:shape)
               end
               klass_.connection.change_table(:spatial_test) do |t_|
-                t_.index(:latlon, :spatial => true)
+                t_.index(:latlon, spatial: true)
               end
               klass_.class_eval do
                 self.rgeo_factory_generator = ::RGeo::Geos.method(:factory)
@@ -187,7 +187,7 @@ module RGeo
             def test_create_geometry_using_limit
               klass_ = create_ar_class
               klass_.connection.create_table(:spatial_test) do |t_|
-                t_.spatial 'geom', :limit => {:type => :line_string}
+                t_.spatial 'geom', limit: { type: :line_string }
               end
               assert_equal(::RGeo::Feature::LineString, klass_.columns.last.geometric_type)
               assert(klass_.cached_attributes.include?('geom'))

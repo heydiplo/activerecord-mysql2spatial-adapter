@@ -34,5 +34,5 @@
 
 
 RAKEFILE_CONFIG = {
-  :product_visible_name => 'MySQL2 Spatial ActiveRecord Adapter',
+  product_visible_name: 'MySQL2 Spatial ActiveRecord Adapter',
 }

@@ -21,7 +21,7 @@ column may need to be NOT NULL.
 
 Examples:
 
-  create_table :my_spatial_table, :options => 'ENGINE=MyISAM' do |t|
+  create_table :my_spatial_table, options: 'ENGINE=MyISAM' do |t|
     t.column :latlon, :point, null: false
     t.linestring :path
     t.geometry :shape
@@ -80,11 +80,11 @@ Now you can interact with the data using the RGeo types:
 You can create simple queries based on objective equality in the same way
 you would on a scalar column:
 
-  rec = MySpatialTable.where(:latlon => RGeo::Geos.factory.point(-122, 47)).first
+  rec = MySpatialTable.where(latlon: RGeo::Geos.factory.point(-122, 47)).first
 
 You can also use WKT:
 
-  rec = MySpatialTable.where(:latlon => 'POINT(-122 47)').first
+  rec = MySpatialTable.where(latlon: 'POINT(-122 47)').first
 
 The adapter also provides experimental support for more complex queries
 such as radius searches. However, these extensions require Arel 2.1

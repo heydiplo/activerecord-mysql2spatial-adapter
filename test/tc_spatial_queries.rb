@@ -70,9 +70,9 @@ module RGeo
               obj_.latlon = @factory.point(1, 2)
               obj_.save!
               id_ = obj_.id
-              obj2_ = klass_.where(:latlon => @factory.point(1, 2)).first
+              obj2_ = klass_.where(latlon: @factory.point(1, 2)).first
               assert_equal(id_, obj2_.id)
-              obj3_ = klass_.where(:latlon => @factory.point(2, 2)).first
+              obj3_ = klass_.where(latlon: @factory.point(2, 2)).first
               assert_nil(obj3_)
             end
 
@@ -83,9 +83,9 @@ module RGeo
               obj_.latlon = @factory.point(1, 2)
               obj_.save!
               id_ = obj_.id
-              obj2_ = klass_.where(:latlon => 'POINT(1 2)').first
+              obj2_ = klass_.where(latlon: 'POINT(1 2)').first
               assert_equal(id_, obj2_.id)
-              obj3_ = klass_.where(:latlon => 'POINT(2 2)').first
+              obj3_ = klass_.where(latlon: 'POINT(2 2)').first
               assert_nil(obj3_)
             end
 
